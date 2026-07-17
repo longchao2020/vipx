@@ -217,6 +217,50 @@ function startLiveSim(){
   }, 2400);
 }
 
+/* --- hero carousel (index.html only) --- */
+var heroSlideIndex = 0;
+var __heroTimer = null;
+function renderHeroDots(){
+  var root = document.getElementById('heroCarousel');
+  if(!root) return;
+  var slides = root.querySelectorAll('.hero-slide');
+  var dotsEl = document.getElementById('heroDots');
+  if(!dotsEl) return;
+  var html = '';
+  for(var i=0;i<slides.length;i++){
+    html += '<span class="hero-dot'+(i===heroSlideIndex?' active':'')+'" onclick="heroGoTo('+i+')"></span>';
+  }
+  dotsEl.innerHTML = html;
+}
+function heroGoTo(i){
+  var root = document.getElementById('heroCarousel');
+  if(!root) return;
+  var slides = root.querySelectorAll('.hero-slide');
+  if(!slides.length) return;
+  heroSlideIndex = (i + slides.length) % slides.length;
+  slides.forEach(function(s, idx){ s.classList.toggle('active', idx === heroSlideIndex); });
+  var dots = document.querySelectorAll('#heroDots .hero-dot');
+  dots.forEach(function(d, idx){ d.classList.toggle('active', idx === heroSlideIndex); });
+}
+function heroNext(){ heroGoTo(heroSlideIndex + 1); }
+function heroPrev(){ heroGoTo(heroSlideIndex - 1); }
+function initHeroCarousel(){
+  var root = document.getElementById('heroCarousel');
+  if(!root) return;
+  var slides = root.querySelectorAll('.hero-slide');
+  if(!slides.length) return;
+  heroSlideIndex = 0;
+  renderHeroDots();
+  function start(){
+    clearInterval(__heroTimer);
+    __heroTimer = setInterval(heroNext, 5500);
+  }
+  function stop(){ clearInterval(__heroTimer); }
+  start();
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+}
+
 function filterSports(cat){
   document.querySelectorAll('.cat-pill[data-cat]').forEach(function(p){ p.classList.toggle('active', p.getAttribute('data-cat')===cat); });
   document.querySelectorAll('[data-sport]').forEach(function(card){
@@ -237,4 +281,5 @@ function initCommon(pageId){
   refreshWalletUI();
   if(pageId === 'profile') renderMyBets();
   startLiveSim();
+  initHeroCarousel();
 }
