@@ -3,21 +3,30 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>热门市场 · VIPX</title>
+<title>热门分类排行榜 · VIPX · VINO Labs 出品</title>
 <link rel="stylesheet" href="/shared/style.css?v=3" />
 <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
 </head>
 <body>
 <header></header>
 <nav class="mobile-nav" id="mobileNav"></nav>
-<div class="ticker-bar"><div class="ticker-track"><span class="ticker-item"><b>BTC</b> <span class="num" data-live-price="106482.30">$106482.30</span> <span class="tk-up">▲2.14%</span></span><span class="ticker-item"><b>ETH</b> <span class="num" data-live-price="3841.22">$3841.22</span> <span class="tk-up">▲1.02%</span></span><span class="ticker-item"><b>SOL</b> <span class="num" data-live-price="218.55">$218.55</span> <span class="tk-up">▲3.87%</span></span><span class="ticker-item"><b>VINO</b> <span class="num" data-live-price="0.0021">$0.0021</span> <span class="tk-up">▲1.54%</span></span><span class="ticker-item"><b>BNB</b> <span class="num" data-live-price="712.40">$712.40</span> <span class="tk-down">▼0.44%</span></span><span class="ticker-item"><b>XRP</b> <span class="num" data-live-price="2.31">$2.31</span> <span class="tk-up">▲4.12%</span></span><span class="ticker-item"><b>DOGE</b> <span class="num" data-live-price="0.198">$0.198</span> <span class="tk-down">▼2.05%</span></span><span class="ticker-item"><b>ENI</b> <span class="num" data-live-price="1.42">$1.42</span> <span class="tk-up">▲5.63%</span></span><span class="ticker-item"><b>PAYG</b> <span class="num" data-live-price="0.088">$0.088</span> <span class="tk-down">▼0.91%</span></span><span class="ticker-item"><b>ADA</b> <span class="num" data-live-price="0.71">$0.71</span> <span class="tk-up">▲1.20%</span></span></div></div><div class="wrap"><div class="hero" style="padding:44px 0 10px;"><div class="hero-badge">🔥 Trending</div><div class="hero-title"><span class="hero-grad">热门</span> 预测市场</div><div class="hero-sub">全站成交量最高、讨论最热烈的预测市场，实时排序</div></div>
-<div class="stat-strip"><div class="stat-cell"><div class="sc-label"><span class="live-dot"></span><span data-i18n="lbl_tvl">lbl_tvl</span></div><div class="sc-val num" data-live-usd="284600000">$284.6M</div><div class="sc-chg" style="color:var(--up);">+3.2% (24h)</div></div><div class="stat-cell"><div class="sc-label"><span class="live-dot"></span><span data-i18n="lbl_vol24">lbl_vol24</span></div><div class="sc-val num" data-live-usd="41900000">$41.9M</div><div class="sc-chg" style="color:var(--up);">+11.8% (24h)</div></div><div class="stat-cell"><div class="sc-label"><span class="live-dot"></span><span data-i18n="lbl_markets">lbl_markets</span></div><div class="sc-val num">1,248</div><div class="sc-chg" style="color:var(--up);">+18 today</div></div><div class="stat-cell"><div class="sc-label"><span class="live-dot"></span><span data-i18n="lbl_users">lbl_users</span></div><div class="sc-val num">96,412</div><div class="sc-chg" style="color:var(--up);">+2,104 today</div></div></div><div style="text-align:right;font-size:10.5px;color:var(--text-faint);margin-top:-18px;margin-bottom:20px;" id="liveUpdatedAt" data-i18n="lbl_updated">刚刚更新</div>
-<div class="section" style="padding-top:0;"><div class="section-head"><h2>🔥 <span data-i18n="sec_trending">热门市场</span></h2><span class="section-tag">12 Markets · Live</span></div><div class="grid">
+<div class="ticker-bar"><div class="ticker-track"><span class="ticker-item"><b>BTC</b> <span class="num" data-live-price="106482.30">$106482.30</span> <span class="tk-up">▲2.14%</span></span><span class="ticker-item"><b>ETH</b> <span class="num" data-live-price="3841.22">$3841.22</span> <span class="tk-up">▲1.02%</span></span><span class="ticker-item"><b>SOL</b> <span class="num" data-live-price="218.55">$218.55</span> <span class="tk-up">▲3.87%</span></span><span class="ticker-item"><b>VINO</b> <span class="num" data-live-price="0.0021">$0.0021</span> <span class="tk-up">▲1.54%</span></span><span class="ticker-item"><b>BNB</b> <span class="num" data-live-price="712.40">$712.40</span> <span class="tk-down">▼0.44%</span></span><span class="ticker-item"><b>XRP</b> <span class="num" data-live-price="2.31">$2.31</span> <span class="tk-up">▲4.12%</span></span><span class="ticker-item"><b>DOGE</b> <span class="num" data-live-price="0.198">$0.198</span> <span class="tk-down">▼2.05%</span></span><span class="ticker-item"><b>ENI</b> <span class="num" data-live-price="1.42">$1.42</span> <span class="tk-up">▲5.63%</span></span><span class="ticker-item"><b>PAYG</b> <span class="num" data-live-price="0.088">$0.088</span> <span class="tk-down">▼0.91%</span></span><span class="ticker-item"><b>ADA</b> <span class="num" data-live-price="0.71">$0.71</span> <span class="tk-up">▲1.20%</span></span></div></div><div class="wrap"><div class="hero" style="padding:44px 0 10px;"><div class="hero-badge">🔥 Trending</div><div class="hero-title"><span class="hero-grad">热门</span> 分类排行榜</div><div class="hero-sub" data-i18n="lb_sub">按 24H 成交量实时排序的 VIPX 分类热度榜，点击任意分类查看该赛道全部市场</div></div>
+<div class="section" style="padding-top:0;"><div class="section-head"><h2>🏆 <span data-i18n="sec_leaderboard">分类热度排行榜</span></h2><span class="section-tag">6 Categories · Live</span></div>
+<div class="lb-head-row"><span data-i18n="lbl_rank">排名</span><span data-i18n="lbl_category">分类</span><span class="lb-num" data-i18n="lbl_vol24h">24H 交易量</span><span class="lb-num" data-i18n="lbl_marketcnt">市场数</span><span></span></div>
+<div class="lb-list">
+<div class="lb-row top1" onclick="location.href='/sports'"><div class="lb-rank">1</div><div class="lb-cat"><span class="lb-cat-icon">🏆</span><div><div class="lb-cat-name" data-i18n="sec_sports">体育赛事</div><div class="lb-cat-sub">2026世界杯 · NBA · 英超 · 欧冠</div></div></div><div class="lb-num"><div class="lb-label">Vol</div><div class="lb-val num" data-live-usd="2340000">$2.34M</div></div><div class="lb-num"><div class="lb-label" data-i18n="lbl_marketcnt">市场数</div><div class="lb-val">356</div><div class="lb-chg" style="color:var(--up);">▲18.4%</div></div><div class="lb-btn" data-i18n="lbl_view">查看</div></div>
+<div class="lb-row" onclick="location.href='/crypto'"><div class="lb-rank">2</div><div class="lb-cat"><span class="lb-cat-icon">₿</span><div><div class="lb-cat-name" data-i18n="sec_crypto">加密货币</div><div class="lb-cat-sub">BTC · ETH · SOL · VINO · ENI</div></div></div><div class="lb-num"><div class="lb-label">Vol</div><div class="lb-val num" data-live-usd="1860000">$1.86M</div></div><div class="lb-num"><div class="lb-label" data-i18n="lbl_marketcnt">市场数</div><div class="lb-val">214</div><div class="lb-chg" style="color:var(--up);">▲11.8%</div></div><div class="lb-btn" data-i18n="lbl_view">查看</div></div>
+<div class="lb-row" onclick="location.href='/politics'"><div class="lb-rank">3</div><div class="lb-cat"><span class="lb-cat-icon">🏛️</span><div><div class="lb-cat-name" data-i18n="sec_politics">政治预测</div><div class="lb-cat-sub">大选 · 政策法案 · 地缘局势</div></div></div><div class="lb-num"><div class="lb-label">Vol</div><div class="lb-val num" data-live-usd="742000">$742K</div></div><div class="lb-num"><div class="lb-label" data-i18n="lbl_marketcnt">市场数</div><div class="lb-val">98</div><div class="lb-chg" style="color:var(--up);">▲6.2%</div></div><div class="lb-btn" data-i18n="lbl_view">查看</div></div>
+<div class="lb-row" onclick="location.href='/events'"><div class="lb-rank">4</div><div class="lb-cat"><span class="lb-cat-icon">🌐</span><div><div class="lb-cat-name" data-i18n="sec_events">国际事件</div><div class="lb-cat-sub">经济数据 · 突发新闻 · 全球峰会</div></div></div><div class="lb-num"><div class="lb-label">Vol</div><div class="lb-val num" data-live-usd="518000">$518K</div></div><div class="lb-num"><div class="lb-label" data-i18n="lbl_marketcnt">市场数</div><div class="lb-val">76</div><div class="lb-chg" style="color:var(--down);">▼2.1%</div></div><div class="lb-btn" data-i18n="lbl_view">查看</div></div>
+<div class="lb-row" onclick="location.href='/culture'"><div class="lb-rank">5</div><div class="lb-cat"><span class="lb-cat-icon">🎬</span><div><div class="lb-cat-name" data-i18n="sec_culture">娱乐 / 流行文化</div><div class="lb-cat-sub">颁奖季 · 票房 · 榜单</div></div></div><div class="lb-num"><div class="lb-label">Vol</div><div class="lb-val num" data-live-usd="286000">$286K</div></div><div class="lb-num"><div class="lb-label" data-i18n="lbl_marketcnt">市场数</div><div class="lb-val">63</div><div class="lb-chg" style="color:var(--up);">▲9.7%</div></div><div class="lb-btn" data-i18n="lbl_view">查看</div></div>
+<div class="lb-row" onclick="location.href='/atm'"><div class="lb-rank">6</div><div class="lb-cat"><span class="lb-cat-icon">🪙</span><div><div class="lb-cat-name">VINO 生态</div><div class="lb-cat-sub">VINO Labs · ENI 公链 · 生态代币</div></div></div><div class="lb-num"><div class="lb-label">Vol</div><div class="lb-val num" data-live-usd="96000">$96K</div></div><div class="lb-num"><div class="lb-label" data-i18n="lbl_marketcnt">市场数</div><div class="lb-val">41</div><div class="lb-chg" style="color:var(--up);">▲4.3%</div></div><div class="lb-btn" data-i18n="lbl_view">查看</div></div>
+</div></div>
+
+<div class="section"><div class="section-head"><h2>🔥 <span data-i18n="sec_trending">热门市场</span></h2><span class="section-tag">6 Markets · Live</span></div><div class="grid">
 <div class="mc-pro" data-sport="worldcup" onclick="location.href='/market'">
   <div class="mc-pro-banner"><span class="mc-pro-badge">世界杯</span><span class="mc-pro-live"><span class="dot"></span>直播中</span><span class="mc-pro-icon">🏆</span></div>
   <div class="mc-pro-body">
     <div class="mc-pro-title">2026世界杯东道主晋级八强？</div>
-    
     <div class="mc-pro-vs"><span>是</span><span>VS</span><span>否</span></div>
     <div class="mc-pro-opts">
       <div class="mc-pro-opt yes">Yes<b>66¢</b></div>
@@ -29,7 +38,6 @@
   <div class="mc-pro-banner"><span class="mc-pro-badge">BTC</span><span class="mc-pro-live"><span class="dot"></span>直播中</span><span class="mc-pro-icon">₿</span></div>
   <div class="mc-pro-body">
     <div class="mc-pro-title">比特币年底前突破 $150,000？</div>
-    
     <div class="mc-pro-vs"><span>是</span><span>VS</span><span>否</span></div>
     <div class="mc-pro-opts">
       <div class="mc-pro-opt yes">Yes<b>41¢</b></div>
@@ -41,7 +49,6 @@
   <div class="mc-pro-banner"><span class="mc-pro-badge">英超</span><span class="mc-pro-live"><span class="dot"></span>直播中</span><span class="mc-pro-icon">⚽</span></div>
   <div class="mc-pro-body">
     <div class="mc-pro-title">曼城 vs 利物浦 · 谁将获胜？</div>
-    
     <div class="mc-pro-vs"><span>曼城</span><span>VS</span><span>利物浦</span></div>
     <div class="mc-pro-opts">
       <div class="mc-pro-opt yes">Yes<b>54¢</b></div>
@@ -50,22 +57,20 @@
     <div class="mc-pro-meta"><span class="num" data-live-usd="182000">$182K</span><span>今晚 20:00</span></div>
   </div>
 </div><div class="mc-pro" onclick="location.href='/market'">
-  <div class="mc-pro-banner"><span class="mc-pro-badge">VINO</span><span class="mc-pro-live"><span class="dot"></span>直播中</span><span class="mc-pro-icon">🪙</span></div>
+  <div class="mc-pro-banner"><span class="mc-pro-badge">政治</span><span class="mc-pro-icon">🏛️</span></div>
   <div class="mc-pro-body">
-    <div class="mc-pro-title">VINO 市值突破 $50M？</div>
-    
+    <div class="mc-pro-title">2026年内是否有主要经济体举行大选？</div>
     <div class="mc-pro-vs"><span>是</span><span>VS</span><span>否</span></div>
     <div class="mc-pro-opts">
-      <div class="mc-pro-opt yes">Yes<b>44¢</b></div>
-      <div class="mc-pro-opt no">No<b>56¢</b></div>
+      <div class="mc-pro-opt yes">Yes<b>62¢</b></div>
+      <div class="mc-pro-opt no">No<b>38¢</b></div>
     </div>
-    <div class="mc-pro-meta"><span class="num" data-live-usd="96000">$96K</span><span>本季度</span></div>
+    <div class="mc-pro-meta"><span class="num" data-live-usd="134000">$134K</span><span>年内</span></div>
   </div>
 </div><div class="mc-pro" data-sport="basketball" onclick="location.href='/market'">
   <div class="mc-pro-banner"><span class="mc-pro-badge">NBA</span><span class="mc-pro-live"><span class="dot"></span>直播中</span><span class="mc-pro-icon">🏀</span></div>
   <div class="mc-pro-body">
     <div class="mc-pro-title">湖人 vs 凯尔特人 · 常规赛</div>
-    
     <div class="mc-pro-vs"><span>湖人</span><span>VS</span><span>凯尔特人</span></div>
     <div class="mc-pro-opts">
       <div class="mc-pro-opt yes">Yes<b>47¢</b></div>
@@ -74,88 +79,15 @@
     <div class="mc-pro-meta"><span class="num" data-live-usd="156000">$156K</span><span>今晚 19:30</span></div>
   </div>
 </div><div class="mc-pro" onclick="location.href='/market'">
-  <div class="mc-pro-banner"><span class="mc-pro-badge">ENI</span><span class="mc-pro-live"><span class="dot"></span>直播中</span><span class="mc-pro-icon">⛓️</span></div>
+  <div class="mc-pro-banner"><span class="mc-pro-badge">娱乐</span><span class="mc-pro-icon">🎬</span></div>
   <div class="mc-pro-body">
-    <div class="mc-pro-title">ENI 公链主网 TPS 破 10 万？</div>
-    
-    <div class="mc-pro-vs"><span>是</span><span>VS</span><span>否</span></div>
-    <div class="mc-pro-opts">
-      <div class="mc-pro-opt yes">Yes<b>55¢</b></div>
-      <div class="mc-pro-opt no">No<b>45¢</b></div>
-    </div>
-    <div class="mc-pro-meta"><span class="num" data-live-usd="64000">$64K</span><span>本季度</span></div>
-  </div>
-</div><div class="mc-pro" data-sport="football" onclick="location.href='/market'">
-  <div class="mc-pro-banner"><span class="mc-pro-badge">欧冠</span><span class="mc-pro-icon">⚽</span></div>
-  <div class="mc-pro-body">
-    <div class="mc-pro-title">本赛季欧冠冠军归属</div>
-    
-    <div class="mc-pro-vs"><span>热门球队</span><span>VS</span><span>黑马</span></div>
-    <div class="mc-pro-opts">
-      <div class="mc-pro-opt yes">Yes<b>58¢</b></div>
-      <div class="mc-pro-opt no">No<b>42¢</b></div>
-    </div>
-    <div class="mc-pro-meta"><span class="num" data-live-usd="310000">$310K</span><span>5月决赛</span></div>
-  </div>
-</div><div class="mc-pro" onclick="location.href='/market'">
-  <div class="mc-pro-banner"><span class="mc-pro-badge">科技</span><span class="mc-pro-icon">🤖</span></div>
-  <div class="mc-pro-body">
-    <div class="mc-pro-title">AI Agent 经济规模年内破万亿？</div>
-    
-    <div class="mc-pro-vs"><span>是</span><span>VS</span><span>否</span></div>
-    <div class="mc-pro-opts">
-      <div class="mc-pro-opt yes">Yes<b>36¢</b></div>
-      <div class="mc-pro-opt no">No<b>64¢</b></div>
-    </div>
-    <div class="mc-pro-meta"><span class="num" data-live-usd="95000">$95K</span><span>年末</span></div>
-  </div>
-</div><div class="mc-pro" data-sport="worldcup" onclick="location.href='/market'">
-  <div class="mc-pro-banner"><span class="mc-pro-badge">世界杯</span><span class="mc-pro-icon">🇧🇷</span></div>
-  <div class="mc-pro-body">
-    <div class="mc-pro-title">巴西夺得2026世界杯冠军？</div>
-
-    <div class="mc-pro-vs"><span>巴西</span><span>VS</span><span>其他</span></div>
-    <div class="mc-pro-opts">
-      <div class="mc-pro-opt yes">Yes<b>31¢</b></div>
-      <div class="mc-pro-opt no">No<b>69¢</b></div>
-    </div>
-    <div class="mc-pro-meta"><span class="num" data-live-usd="1200000">$1.2M</span><span>2026决赛</span></div>
-  </div>
-</div><div class="mc-pro" onclick="location.href='/market'">
-  <div class="mc-pro-banner"><span class="mc-pro-badge">ETH</span><span class="mc-pro-icon">Ξ</span></div>
-  <div class="mc-pro-body">
-    <div class="mc-pro-title">以太坊现货 ETF 净流入创年度新高？</div>
-
-    <div class="mc-pro-vs"><span>是</span><span>VS</span><span>否</span></div>
+    <div class="mc-pro-title">年度票房冠军影片归属</div>
+    <div class="mc-pro-vs"><span>好莱坞大片</span><span>VS</span><span>其他</span></div>
     <div class="mc-pro-opts">
       <div class="mc-pro-opt yes">Yes<b>57¢</b></div>
       <div class="mc-pro-opt no">No<b>43¢</b></div>
     </div>
-    <div class="mc-pro-meta"><span class="num" data-live-usd="318000">$318K</span><span>本季度</span></div>
-  </div>
-</div><div class="mc-pro" data-sport="esports" onclick="location.href='/market'">
-  <div class="mc-pro-banner"><span class="mc-pro-badge">LOL</span><span class="mc-pro-live"><span class="dot"></span>直播中</span><span class="mc-pro-icon">🎮</span></div>
-  <div class="mc-pro-body">
-    <div class="mc-pro-title">S赛冠军花落哪支战队？</div>
-
-    <div class="mc-pro-vs"><span>LPL战队</span><span>VS</span><span>LCK战队</span></div>
-    <div class="mc-pro-opts">
-      <div class="mc-pro-opt yes">Yes<b>52¢</b></div>
-      <div class="mc-pro-opt no">No<b>48¢</b></div>
-    </div>
-    <div class="mc-pro-meta"><span class="num" data-live-usd="210000">$210K</span><span>2026-11</span></div>
-  </div>
-</div><div class="mc-pro" onclick="location.href='/market'">
-  <div class="mc-pro-banner"><span class="mc-pro-badge">监管</span><span class="mc-pro-icon">⚖️</span></div>
-  <div class="mc-pro-body">
-    <div class="mc-pro-title">主要国家通过全国性AI监管法案？</div>
-
-    <div class="mc-pro-vs"><span>是</span><span>VS</span><span>否</span></div>
-    <div class="mc-pro-opts">
-      <div class="mc-pro-opt yes">Yes<b>47¢</b></div>
-      <div class="mc-pro-opt no">No<b>53¢</b></div>
-    </div>
-    <div class="mc-pro-meta"><span class="num" data-live-usd="29000">$29K</span><span>年末</span></div>
+    <div class="mc-pro-meta"><span class="num" data-live-usd="88000">$88K</span><span>年末</span></div>
   </div>
 </div>
 </div></div></div>
@@ -166,8 +98,8 @@
         <h4>VI<span style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;">PX</span></h4>
         <div style="font-size:12px;color:var(--text-dim);max-width:280px;" data-i18n="foot_desc">全球顶级 Web3 预测平台</div>
       </div>
-      <div class="footer-col"><h4 data-i18n="foot_markets">市场</h4><a href="/crypto">Crypto</a><a href="/sports">Sports</a><a href="/events">Events</a><a href="/trending">Trending</a></div>
-      <div class="footer-col"><h4 data-i18n="foot_eco">生态</h4><a href="/atm">About VINO</a><a href="/profile">Profile</a></div>
+      <div class="footer-col"><h4 data-i18n="foot_markets">市场</h4><a href="/crypto">Crypto</a><a href="/sports">Sports</a><a href="/politics">Politics</a><a href="/culture">Culture</a><a href="/events">Events</a></div>
+      <div class="footer-col"><h4 data-i18n="foot_eco">生态</h4><a href="/atm">About VINO Labs</a><a href="/profile">Profile</a></div>
       <div class="footer-col"><h4 data-i18n="foot_account">账户</h4><a href="/profile">Profile</a><a href="javascript:connectMetaMask()">Wallet</a></div>
     </div>
     <div class="footer-bottom">&copy; 2026 VIPX &middot; Powered by VINO Labs Ecosystem</div>

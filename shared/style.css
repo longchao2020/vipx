@@ -44,6 +44,8 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,5,24,.72);backdrop-f
 .hdr-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:19px;flex-shrink:0;letter-spacing:-.02em;}
 .hdr-logo img{width:29px;height:29px;}
 .hdr-logo .hl-vi{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hdr-brand-tag{font-size:9.5px;font-weight:800;color:var(--text-faint);border:1px solid var(--border);padding:2px 8px;border-radius:99px;letter-spacing:.02em;margin-left:2px;white-space:nowrap;}
+@media(max-width:640px){.hdr-brand-tag{display:none;}}
 .hdr-nav{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none;}
 .hdr-nav::-webkit-scrollbar{display:none;}
 .hdr-nav a{padding:9px 15px;border-radius:10px;font-size:13.5px;font-weight:650;color:var(--text-dim);white-space:nowrap;transition:.15s;letter-spacing:-.01em;}
@@ -168,10 +170,51 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,5,24,.72);backdrop-f
 .atm-cta-btn-white{background:var(--grad);color:#fff;border:none;}
 .atm-cta-btn-outline{background:transparent;border:1px solid var(--border-strong);color:var(--text);}
 
-.star-card{background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:18px;text-align:center;padding:18px;box-shadow:var(--shadow-card);}
-.star-card .sc-avatar{width:60px;height:60px;border-radius:50%;background:var(--grad);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:24px;}
+.star-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;}
+.star-card{background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:18px;text-align:center;padding:18px;box-shadow:var(--shadow-card);position:relative;transition:.2s;}
+.star-card:hover{border-color:var(--border-strong);transform:translateY(-3px);}
+.star-card .sc-avatar{width:64px;height:64px;border-radius:50%;background:var(--grad);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;position:relative;overflow:hidden;letter-spacing:-.02em;}
+.star-card .sc-flag{position:absolute;bottom:6px;right:calc(50% - 34px);font-size:15px;background:var(--card-solid);border-radius:50%;padding:2px;line-height:1;box-shadow:0 0 0 2px var(--card-solid);}
 .sc-name{font-weight:800;font-size:14px;}
+.sc-role{font-size:10.5px;color:var(--text-faint);margin-top:1px;}
 .sc-odds{font-size:11.5px;color:var(--gold2);margin-top:4px;font-weight:700;}
+@media(max-width:640px){.star-grid{grid-template-columns:repeat(2,1fr);gap:10px;}.star-card{padding:14px 10px;}.star-card .sc-avatar{width:52px;height:52px;font-size:18px;}}
+
+/* leaderboard (trending page) */
+.lb-list{display:flex;flex-direction:column;gap:10px;}
+.lb-row{display:grid;grid-template-columns:40px 2fr 1fr 1fr 100px;align-items:center;gap:14px;background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:16px;padding:14px 18px;cursor:pointer;transition:.2s;box-shadow:var(--shadow-card);}
+.lb-row:hover{border-color:var(--border-strong);transform:translateY(-2px);}
+.lb-rank{font-size:18px;font-weight:900;color:var(--text-faint);text-align:center;}
+.lb-row.top1 .lb-rank,.lb-row.top1{color:var(--gold2);}
+.lb-row.top1{border-color:rgba(240,185,11,.4);}
+.lb-cat{display:flex;align-items:center;gap:12px;font-weight:800;font-size:14.5px;min-width:0;}
+.lb-cat-icon{font-size:22px;flex-shrink:0;}
+.lb-cat-name{min-width:0;}
+.lb-cat-sub{font-size:11px;color:var(--text-faint);font-weight:600;margin-top:2px;}
+.lb-num{text-align:right;}
+.lb-num .lb-label{font-size:10px;color:var(--text-faint);font-weight:700;text-transform:uppercase;}
+.lb-num .lb-val{font-size:14.5px;font-weight:800;margin-top:2px;}
+.lb-chg{font-weight:800;font-size:12.5px;}
+.lb-btn{justify-self:end;padding:8px 16px;border-radius:10px;background:var(--grad);color:#fff;font-weight:700;font-size:12px;text-align:center;}
+.lb-head-row{display:grid;grid-template-columns:40px 2fr 1fr 1fr 100px;gap:14px;padding:0 18px;font-size:10.5px;color:var(--text-faint);font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px;}
+@media(max-width:700px){
+  .lb-head-row{display:none;}
+  .lb-row{grid-template-columns:32px 1fr;grid-template-areas:"rank cat" "rank vol" "rank btn";row-gap:6px;}
+  .lb-rank{grid-area:rank;}
+  .lb-cat{grid-area:cat;}
+  .lb-row .lb-num:nth-of-type(1){grid-area:vol;text-align:left;}
+  .lb-row .lb-num:nth-of-type(2){display:none;}
+  .lb-btn{grid-area:btn;justify-self:start;margin-top:4px;}
+}
+
+/* why-VIPX cards */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;backdrop-filter:blur(10px);}
+.why-icon{width:38px;height:38px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px;}
+.why-title{font-weight:800;font-size:14.5px;margin-bottom:5px;}
+.why-desc{font-size:12px;color:var(--text-dim);line-height:1.6;}
+.data-source-note{text-align:right;font-size:10.5px;color:var(--text-faint);margin-top:-18px;margin-bottom:20px;}
+@media(max-width:640px){.data-source-note{text-align:left;margin-top:6px;}}
 
 footer{border-top:1px solid var(--border);padding:44px 0 32px;margin-top:44px;background:var(--bg2);}
 .footer-inner{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:26px;}
