@@ -6,12 +6,26 @@
 <title>市场详情 · VIPX · VINO Labs 出品</title>
 <link rel="stylesheet" href="/shared/style.css?v=3" />
 <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 </head>
 <body>
 <header></header>
 <nav class="mobile-nav" id="mobileNav"></nav>
 
-<div class="wrap"><div class="section"><h1 style="font-size:27px;">曼城 vs 利物浦 · 谁将获胜？</h1><div class="md-layout"><div class="md-panel"><h3>价格走势</h3><div style="height:220px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);background:rgba(255,255,255,.03);border-radius:12px;">📈 实时价格图表</div></div><div class="md-panel"><h3>下单交易</h3><div class="mc-pro-opts"><div class="mc-pro-opt yes">Yes<b>54¢</b></div><div class="mc-pro-opt no">No<b>46¢</b></div></div><button class="btn btn-grad" style="width:100%;margin-top:14px;" onclick="connectMetaMask()">🔗 连接钱包下单</button></div></div>
+<div class="wrap"><div class="section">
+<div class="md-head">
+  <div class="md-head-badge"><span class="md-head-icon">⚽</span><span>英超 · 曼城 vs 利物浦</span></div>
+  <div class="md-head-actions"><button class="md-icon-btn" title="复制链接" onclick="navigator.clipboard&&navigator.clipboard.writeText(location.href);toast('已复制链接')">🔗</button><button class="md-icon-btn" title="收藏" onclick="toast('已加入关注')">🔖</button></div>
+</div>
+<h1 style="font-size:27px;">曼城 vs 利物浦 · 谁将获胜？</h1>
+<div class="md-layout"><div class="md-panel">
+  <div class="md-chart-legend" id="chartLegend">
+    <span class="md-legend-item"><i style="background:var(--gold2)"></i>Yes <b>54%</b></span>
+    <span class="md-legend-item"><i style="background:var(--accent2)"></i>No <b>46%</b></span>
+  </div>
+  <div style="height:230px;position:relative;"><canvas id="priceChart"></canvas></div>
+  <div class="md-chart-source">数据来源：VIPX 撮合引擎 · <span id="chartUpdatedAt">刚刚更新</span></div>
+</div><div class="md-panel"><h3>下单交易</h3><div class="mc-pro-opts"><div class="mc-pro-opt yes">Yes<b>54%</b><small>54¢</small></div><div class="mc-pro-opt no">No<b>46%</b><small>46¢</small></div></div><button class="btn btn-grad" style="width:100%;margin-top:14px;" onclick="connectMetaMask()">🔗 连接钱包下单</button></div></div>
 
 <div class="md-panel market-rules" style="margin-top:20px;">
   <h3>📜 市场规则</h3>
@@ -65,5 +79,39 @@
 <script src="/shared/common.js"></script>
 <script src="/shared/effects.js"></script>
 <script>initCommon('market');</script>
+<script>
+(function(){
+  var labels = ['07-10','07-11','07-12','07-13','07-14','07-15','07-16','07-17'];
+  var yes = [47,49,46,51,53,50,52,54];
+  var no = yes.map(function(v){ return 100 - v; });
+  function render(){
+    var el = document.getElementById('priceChart');
+    if(!el || typeof Chart === 'undefined') return;
+    var css = getComputedStyle(document.documentElement);
+    var gold = css.getPropertyValue('--gold2').trim() || '#fcd34d';
+    var accent = css.getPropertyValue('--accent2').trim() || '#c084fc';
+    var dim = css.getPropertyValue('--text-faint').trim() || '#6f629e';
+    new Chart(el.getContext('2d'), {
+      type:'line',
+      data:{ labels:labels, datasets:[
+        { label:'Yes', data:yes, borderColor:gold, backgroundColor:'transparent', borderWidth:2, pointRadius:0, tension:0, stepped:true },
+        { label:'No', data:no, borderColor:accent, backgroundColor:'transparent', borderWidth:2, pointRadius:0, tension:0, stepped:true }
+      ]},
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        interaction:{ intersect:false, mode:'index' },
+        plugins:{ legend:{ display:false }, tooltip:{ callbacks:{ label:function(ctx){ return ctx.dataset.label+': '+ctx.parsed.y+'%'; } } } },
+        scales:{
+          x:{ grid:{ display:false }, ticks:{ color:dim, font:{ size:10 }, maxRotation:0 } },
+          y:{ min:0, max:100, grid:{ color:'rgba(255,255,255,.05)' }, ticks:{ color:dim, font:{ size:10 }, stepSize:20, callback:function(v){ return v+'%'; } } }
+        }
+      }
+    });
+    var ts = document.getElementById('chartUpdatedAt');
+    if(ts) ts.textContent = t('lbl_updated');
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render); else render();
+})();
+</script>
 </body>
 </html>
