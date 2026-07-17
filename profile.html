@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>我的 · VIPX</title>
+<link rel="stylesheet" href="/shared/style.css?v=3" />
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+<header></header>
+<nav class="mobile-nav" id="mobileNav"></nav>
+
+<div class="wrap wrap-single">
+<div class="profile-hero"><div class="profile-wallet-row"><div style="display:flex;align-items:center;gap:14px;"><div class="profile-avatar">👤</div><div><div style="font-weight:800;font-size:16px;" data-i18n="profile_title">我的</div><div style="font-size:12px;color:var(--text-dim);" id="profileAddr">未连接钱包</div></div></div><button class="btn btn-grad" id="profileWalletBtn" onclick="connectMetaMask()">🔗 连接钱包</button></div></div>
+<div class="atm-page-section"><div class="atm-section-head"><h2 data-i18n="language">语言 Language</h2></div><div class="lang-grid"><div class="lang-card" data-locale="zh-CN" onclick="setLocale('zh-CN')">简体中文</div><div class="lang-card" data-locale="zh-TW" onclick="setLocale('zh-TW')">繁體中文</div><div class="lang-card" data-locale="en" onclick="setLocale('en')">English</div></div></div>
+<div class="atm-page-section"><div class="atm-section-head"><h2 data-i18n="my_bets">我的下注</h2></div><div class="bets-list" id="betsList"></div></div>
+<div class="atm-page-section"><div class="atm-section-head"><h2 data-i18n="theme">主题模式</h2></div><div class="profile-menu-row"><span>Dark / Light</span><button class="btn" onclick="toggleThemeBtn()">🌙 切换</button></div><div class="profile-menu-row"><span data-i18n="wallet_disconnect">断开连接</span><button class="btn" onclick="disconnectWallet()">🔌 断开</button></div></div>
+</div>
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>VI<span style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;">PX</span></h4>
+        <div style="font-size:12px;color:var(--text-dim);max-width:280px;" data-i18n="foot_desc">全球顶级 Web3 预测平台</div>
+      </div>
+      <div class="footer-col"><h4 data-i18n="foot_markets">市场</h4><a href="/crypto">Crypto</a><a href="/sports">Sports</a><a href="/events">Events</a><a href="/trending">Trending</a></div>
+      <div class="footer-col"><h4 data-i18n="foot_eco">生态</h4><a href="/atm">About VINO</a><a href="/profile">Profile</a></div>
+      <div class="footer-col"><h4 data-i18n="foot_account">账户</h4><a href="/profile">Profile</a><a href="javascript:connectMetaMask()">Wallet</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 VIPX &middot; Powered by VINO Labs Ecosystem</div>
+  </div>
+</footer>
+
+<div id="toast" class="toast"></div>
+<script src="/shared/common.js"></script>
+<script src="/shared/effects.js"></script>
+<script>initCommon('profile');</script>
+</body>
+</html>

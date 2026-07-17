@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>市场详情 · VIPX</title>
+<link rel="stylesheet" href="/shared/style.css?v=3" />
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+<header></header>
+<nav class="mobile-nav" id="mobileNav"></nav>
+
+<div class="wrap"><div class="section"><h1 style="font-size:27px;">曼城 vs 利物浦 · 谁将获胜？</h1><div class="md-layout"><div class="md-panel"><h3>价格走势</h3><div style="height:220px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);background:rgba(255,255,255,.03);border-radius:12px;">📈 实时价格图表</div></div><div class="md-panel"><h3>下单交易</h3><div class="mc-pro-opts"><div class="mc-pro-opt yes">Yes<b>54¢</b></div><div class="mc-pro-opt no">No<b>46¢</b></div></div><button class="btn btn-grad" style="width:100%;margin-top:14px;" onclick="connectMetaMask()">🔗 连接钱包下单</button></div></div></div></div>
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>VI<span style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;">PX</span></h4>
+        <div style="font-size:12px;color:var(--text-dim);max-width:280px;" data-i18n="foot_desc">全球顶级 Web3 预测平台</div>
+      </div>
+      <div class="footer-col"><h4 data-i18n="foot_markets">市场</h4><a href="/crypto">Crypto</a><a href="/sports">Sports</a><a href="/events">Events</a><a href="/trending">Trending</a></div>
+      <div class="footer-col"><h4 data-i18n="foot_eco">生态</h4><a href="/atm">About VINO</a><a href="/profile">Profile</a></div>
+      <div class="footer-col"><h4 data-i18n="foot_account">账户</h4><a href="/profile">Profile</a><a href="javascript:connectMetaMask()">Wallet</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 VIPX &middot; Powered by VINO Labs Ecosystem</div>
+  </div>
+</footer>
+
+<div id="toast" class="toast"></div>
+<script src="/shared/common.js"></script>
+<script src="/shared/effects.js"></script>
+<script>initCommon('market');</script>
+</body>
+</html>
