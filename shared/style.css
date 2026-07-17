@@ -122,6 +122,34 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,5,24,.72);backdrop-f
 @keyframes live-pulse-red{0%{box-shadow:0 0 0 0 rgba(255,77,106,.6);}70%{box-shadow:0 0 0 6px rgba(255,77,106,0);}100%{box-shadow:0 0 0 0 rgba(255,77,106,0);}}
 .mc-pro-icon{position:absolute;right:14px;top:8px;font-size:26px;opacity:.85;}
 .mc-pro-body{padding:14px 16px 16px;}
+
+/* themed banner backgrounds (stand-in for real photography — no licensed images available) */
+.mc-pro-banner.bg-worldcup{background:linear-gradient(120deg,rgba(18,120,80,.55),rgba(147,51,234,.3)),repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 10px,transparent 10px 20px);}
+.mc-pro-banner.bg-crypto{background:linear-gradient(120deg,rgba(240,185,11,.35),rgba(147,51,234,.4));}
+.mc-pro-banner.bg-sports{background:linear-gradient(120deg,rgba(220,38,38,.35),rgba(147,51,234,.35));}
+.mc-pro-banner.bg-culture{background:linear-gradient(120deg,rgba(232,121,249,.4),rgba(147,51,234,.35));}
+.mc-pro-banner.bg-events{background:linear-gradient(120deg,rgba(56,189,248,.3),rgba(147,51,234,.35));}
+.mc-pro-banner.bg-vino{background:linear-gradient(120deg,rgba(240,185,11,.3),rgba(192,38,211,.4));}
+
+/* prominent volume badge on card banner */
+.mc-vol-badge{position:absolute;left:14px;bottom:8px;font-size:13px;font-weight:900;color:#fff;letter-spacing:-.01em;text-shadow:0 1px 6px rgba(0,0,0,.35);}
+.mc-vol-badge small{font-size:10px;font-weight:700;opacity:.8;margin-left:3px;}
+
+/* multi-candidate market card */
+.mc-multi-list{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
+.mc-multi-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:9px;font-size:12px;font-weight:700;color:var(--text-dim);}
+.mc-multi-row:first-child{color:var(--text);}
+.mc-multi-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:110px;}
+.mc-multi-bar{height:6px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden;}
+.mc-multi-fill{height:100%;border-radius:99px;background:var(--grad);}
+.mc-multi-row:first-child .mc-multi-fill{background:var(--grad-gold);}
+.mc-multi-pct{font-weight:800;color:var(--text);min-width:34px;text-align:right;}
+
+/* hot keyword tag scroll row (Polymarket-style) */
+.tag-scroll{display:flex;gap:8px;overflow-x:auto;padding:2px 0 18px;scrollbar-width:none;}
+.tag-scroll::-webkit-scrollbar{display:none;}
+.tag-chip{flex-shrink:0;padding:6px 14px;border-radius:99px;background:rgba(255,255,255,.03);border:1px solid var(--border);font-size:12px;font-weight:650;color:var(--text-dim);white-space:nowrap;}
+.tag-chip:hover{color:var(--text);border-color:var(--border-strong);}
 .mc-pro-title{font-size:14.5px;font-weight:800;margin-bottom:10px;line-height:1.4;min-height:40px;}
 .mc-pro-spark{margin-bottom:10px;}
 .mc-pro-vs{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:var(--text-dim);margin-bottom:12px;font-weight:600;}
