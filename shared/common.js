@@ -4,7 +4,6 @@ var NAV_CATS = [
   {id:'trending', key:'nav_trending', icon:'🔥', href:'/trending'},
   {id:'crypto', key:'nav_crypto', icon:'₿', href:'/crypto'},
   {id:'sports', key:'nav_sports', icon:'🏆', href:'/sports'},
-  {id:'politics', key:'nav_politics', icon:'🏛️', href:'/politics'},
   {id:'culture', key:'nav_culture', icon:'🎬', href:'/culture'},
   {id:'events', key:'nav_events', icon:'🌐', href:'/events'},
   {id:'atm', key:'nav_atm', icon:'🪙', href:'/atm'}
@@ -12,45 +11,45 @@ var NAV_CATS = [
 var MOBILE_CATS = ['home','trending','crypto','sports','profile'];
 
 var I18N = {
-'zh-CN':{nav_home:'首页',nav_trending:'热门',nav_crypto:'加密货币',nav_sports:'体育赛事',nav_politics:'政治',nav_culture:'娱乐',nav_events:'国际事件',nav_atm:'关于VINO',nav_profile:'我的',
+'zh-CN':{nav_home:'首页',nav_trending:'热门',nav_crypto:'加密货币',nav_sports:'体育赛事',nav_culture:'娱乐',nav_events:'国际事件',nav_atm:'关于VINO',nav_profile:'我的',
 brand_powered:'VINO Labs 出品',
 hero_badge:'⚡ VINO Labs 出品 · 全球顶级 Web3 预测平台',hero_title1:'预测未来',hero_title2:'赢取真实回报',
-hero_sub:'VIPX 是 VINO Labs 生态旗下的去中心化预测市场，覆盖加密、体育、政治与全球事件，由 VINO Labs 自建的 ENI 公链提供毫秒级实时结算基础设施',
+hero_sub:'VIPX 是 VINO Labs 生态旗下的去中心化预测市场，覆盖加密、体育与全球事件，由 VINO Labs 自建的 ENI 公链提供毫秒级实时结算基础设施',
 btn_connect:'🔗 连接钱包开始预测',btn_explore:'🚀 探索全部市场',btn_about_vino:'🪙 了解 VINO Labs',
 lbl_tvl:'平台总锁仓量',lbl_vol24:'24H 总交易量',lbl_markets:'活跃市场',lbl_users:'链上活跃地址',lbl_updated:'刚刚更新',
 lbl_data_note:'以上数据来自 VIPX 撮合引擎与 ENI 公链链上数据，每 2.4 秒同步一次，仅供参考',
 sec_ticker:'实时行情',sec_trending:'热门市场',sec_crypto:'加密货币',sec_football:'足球 / 世界杯',sec_basketball:'篮球',
-sec_star:'世界杯明星球员',sec_wc:'🏆 2026 世界杯专区',sec_wc_groups:'小组积分榜',sec_wc_odds:'冠军赔率',sec_sports:'体育赛事',sec_politics:'政治预测',sec_culture:'娱乐 / 流行文化',sec_events:'国际事件',sec_leaderboard:'分类热度排行榜',sec_why:'为什么选择 VIPX',lb_sub:'按 24H 成交量实时排序的 VIPX 分类热度榜，点击任意分类查看该赛道全部市场',
+sec_star:'世界杯明星球员',sec_wc:'🏆 2026 世界杯专区',sec_wc_groups:'小组积分榜',sec_wc_odds:'冠军赔率',sec_sports:'体育赛事',sec_culture:'娱乐 / 流行文化',sec_events:'国际事件',sec_leaderboard:'分类热度排行榜',sec_why:'为什么选择 VIPX',lb_sub:'按 24H 成交量实时排序的 VIPX 分类热度榜，点击任意分类查看该赛道全部市场',
 flt_all:'全部',flt_football:'足球',flt_basketball:'篮球',flt_worldcup:'世界杯',flt_esports:'电竞',flt_snooker:'台球',
 lbl_rank:'排名',lbl_category:'分类',lbl_vol24h:'24H 交易量',lbl_marketcnt:'市场数',lbl_chg24h:'24H 变化',lbl_view:'查看',
 why1_t:'VINO Labs 生态背书',why1_d:'由 VINO Labs 自建 ENI 公链提供底层结算，非空气平台',why2_t:'毫秒级实时结算',why2_d:'依托 ENI 公链高吞吐架构，下注与赔付近乎实时到账',why3_t:'全球化合规布局',why3_d:'六大运营中心 + MSB 牌照布局，合规先行',
 foot_desc:'VINO Labs 生态旗下 · 全球顶级 Web3 预测平台',foot_markets:'市场',foot_eco:'生态',foot_account:'账户',
 profile_title:'我的',my_bets:'我的下注',wallet_connect:'连接钱包',wallet_disconnect:'断开连接',language:'语言 Language',theme:'主题模式',
 empty_bets:'暂无下注记录',go_predict:'去预测',view_all:'查看全部',live:'直播中',all_markets:'全部市场'},
-'zh-TW':{nav_home:'首頁',nav_trending:'熱門',nav_crypto:'加密貨幣',nav_sports:'體育賽事',nav_politics:'政治',nav_culture:'娛樂',nav_events:'國際事件',nav_atm:'關於VINO',nav_profile:'我的',
+'zh-TW':{nav_home:'首頁',nav_trending:'熱門',nav_crypto:'加密貨幣',nav_sports:'體育賽事',nav_culture:'娛樂',nav_events:'國際事件',nav_atm:'關於VINO',nav_profile:'我的',
 brand_powered:'VINO Labs 出品',
 hero_badge:'⚡ VINO Labs 出品 · 全球頂級 Web3 預測平台',hero_title1:'預測未來',hero_title2:'贏取真實回報',
-hero_sub:'VIPX 是 VINO Labs 生態旗下的去中心化預測市場，涵蓋加密、體育、政治與全球事件，由 VINO Labs 自建的 ENI 公鏈提供毫秒級即時結算基礎設施',
+hero_sub:'VIPX 是 VINO Labs 生態旗下的去中心化預測市場，涵蓋加密、體育與全球事件，由 VINO Labs 自建的 ENI 公鏈提供毫秒級即時結算基礎設施',
 btn_connect:'🔗 連接錢包開始預測',btn_explore:'🚀 探索全部市場',btn_about_vino:'🪙 了解 VINO Labs',
 lbl_tvl:'平台總鎖倉量',lbl_vol24:'24H 總交易量',lbl_markets:'活躍市場',lbl_users:'鏈上活躍地址',lbl_updated:'剛剛更新',
 lbl_data_note:'以上數據來自 VIPX 撮合引擎與 ENI 公鏈鏈上數據，每 2.4 秒同步一次，僅供參考',
 sec_ticker:'即時行情',sec_trending:'熱門市場',sec_crypto:'加密貨幣',sec_football:'足球 / 世界盃',sec_basketball:'籃球',
-sec_star:'世界盃明星球員',sec_wc:'🏆 2026 世界盃專區',sec_wc_groups:'小組積分榜',sec_wc_odds:'冠軍賠率',sec_sports:'體育賽事',sec_politics:'政治預測',sec_culture:'娛樂 / 流行文化',sec_events:'國際事件',sec_leaderboard:'分類熱度排行榜',sec_why:'為什麼選擇 VIPX',lb_sub:'按 24H 成交量即時排序的 VIPX 分類熱度榜，點擊任意分類查看該賽道全部市場',
+sec_star:'世界盃明星球員',sec_wc:'🏆 2026 世界盃專區',sec_wc_groups:'小組積分榜',sec_wc_odds:'冠軍賠率',sec_sports:'體育賽事',sec_culture:'娛樂 / 流行文化',sec_events:'國際事件',sec_leaderboard:'分類熱度排行榜',sec_why:'為什麼選擇 VIPX',lb_sub:'按 24H 成交量即時排序的 VIPX 分類熱度榜，點擊任意分類查看該賽道全部市場',
 flt_all:'全部',flt_football:'足球',flt_basketball:'籃球',flt_worldcup:'世界盃',flt_esports:'電競',flt_snooker:'桌球',
 lbl_rank:'排名',lbl_category:'分類',lbl_vol24h:'24H 交易量',lbl_marketcnt:'市場數',lbl_chg24h:'24H 變化',lbl_view:'查看',
 why1_t:'VINO Labs 生態背書',why1_d:'由 VINO Labs 自建 ENI 公鏈提供底層結算，非空氣平台',why2_t:'毫秒級即時結算',why2_d:'依托 ENI 公鏈高吞吐架構，下注與賠付近乎即時到帳',why3_t:'全球化合規佈局',why3_d:'六大運營中心 + MSB 牌照佈局，合規先行',
 foot_desc:'VINO Labs 生態旗下 · 全球頂級 Web3 預測平台',foot_markets:'市場',foot_eco:'生態',foot_account:'帳戶',
 profile_title:'我的',my_bets:'我的下注',wallet_connect:'連接錢包',wallet_disconnect:'斷開連接',language:'語言 Language',theme:'主題模式',
 empty_bets:'暫無下注記錄',go_predict:'去預測',view_all:'查看全部',live:'直播中',all_markets:'全部市場'},
-'en':{nav_home:'Home',nav_trending:'Trending',nav_crypto:'Crypto',nav_sports:'Sports',nav_politics:'Politics',nav_culture:'Culture',nav_events:'World Events',nav_atm:'About VINO',nav_profile:'Profile',
+'en':{nav_home:'Home',nav_trending:'Trending',nav_crypto:'Crypto',nav_sports:'Sports',nav_culture:'Culture',nav_events:'World Events',nav_atm:'About VINO',nav_profile:'Profile',
 brand_powered:'By VINO Labs',
 hero_badge:'⚡ By VINO Labs · Global Top-Tier Web3 Prediction Platform',hero_title1:'Predict the Future',hero_title2:'Win Real Rewards',
-hero_sub:'VIPX is the decentralized prediction market of the VINO Labs ecosystem, covering crypto, sports, politics and global events, powered by the VINO Labs-built ENI chain with millisecond settlement infrastructure',
+hero_sub:'VIPX is the decentralized prediction market of the VINO Labs ecosystem, covering crypto, sports and global events, powered by the VINO Labs-built ENI chain with millisecond settlement infrastructure',
 btn_connect:'🔗 Connect Wallet to Predict',btn_explore:'🚀 Explore All Markets',btn_about_vino:'🪙 About VINO Labs',
 lbl_tvl:'Total Value Locked',lbl_vol24:'24H Volume',lbl_markets:'Active Markets',lbl_users:'On-chain Active Addresses',lbl_updated:'Updated just now',
 lbl_data_note:'Data sourced from the VIPX matching engine and ENI on-chain data, synced every 2.4 seconds. For reference only.',
 sec_ticker:'Live Prices',sec_trending:'Trending Markets',sec_crypto:'Crypto',sec_football:'Football / World Cup',sec_basketball:'Basketball',
-sec_star:'World Cup Star Players',sec_wc:'🏆 2026 World Cup Zone',sec_wc_groups:'Group Standings',sec_wc_odds:'Champion Odds',sec_sports:'Sports',sec_politics:'Politics',sec_culture:'Culture & Pop Trends',sec_events:'World Events',sec_leaderboard:'Category Leaderboard',sec_why:'Why VIPX',lb_sub:'VIPX category leaderboard ranked by live 24H volume — click any category to see all its markets',
+sec_star:'World Cup Star Players',sec_wc:'🏆 2026 World Cup Zone',sec_wc_groups:'Group Standings',sec_wc_odds:'Champion Odds',sec_sports:'Sports',sec_culture:'Culture & Pop Trends',sec_events:'World Events',sec_leaderboard:'Category Leaderboard',sec_why:'Why VIPX',lb_sub:'VIPX category leaderboard ranked by live 24H volume — click any category to see all its markets',
 flt_all:'All',flt_football:'Football',flt_basketball:'Basketball',flt_worldcup:'World Cup',flt_esports:'Esports',flt_snooker:'Snooker',
 lbl_rank:'Rank',lbl_category:'Category',lbl_vol24h:'24H Volume',lbl_marketcnt:'Markets',lbl_chg24h:'24H Change',lbl_view:'View',
 why1_t:'Backed by VINO Labs',why1_d:'Settlement runs on the ENI chain built by VINO Labs — not an unbacked platform',why2_t:'Millisecond Settlement',why2_d:'High-throughput ENI chain architecture makes bets and payouts near-instant',why3_t:'Global Compliance',why3_d:'Six regional operating hubs plus MSB licensing — compliance first',
@@ -170,7 +169,7 @@ function buildHeader(active){
   var langOpts = LOCALES.map(function(l){
     return '<button class="lang-opt '+(l.id===getLocale()?'active':'')+'" data-locale="'+l.id+'" onclick="setLocale(\''+l.id+'\')">'+l.label+'</button>';
   }).join('');
-  return '<div class="hdr-inner"><a href="/" class="hdr-logo"><img src="/shared/logo.svg" alt="VIPX"/><span>VI<span class="hl-vi">PX</span></span><span class="hdr-brand-tag">'+t('brand_powered')+'</span></a>'
+  return '<div class="hdr-inner"><a href="/" class="hdr-logo"><img src="/shared/logo.svg" alt="VIPX"/><span>VI<span class="hl-vi">PX</span></span></a>'
     + '<nav class="hdr-nav">'+links+'</nav>'
     + '<div class="hdr-actions">'
     + '<div class="lang-wrap"><button class="btn btn-icon" onclick="toggleLangMenu()">🌐</button><div class="lang-menu" id="langMenu">'+langOpts+'</div></div>'
