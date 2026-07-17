@@ -22,6 +22,9 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 body{background-image:radial-gradient(ellipse 1000px 560px at 12% -8%, rgba(147,51,234,.38), transparent 60%),radial-gradient(ellipse 900px 520px at 100% 0%, rgba(192,132,252,.24), transparent 55%),radial-gradient(ellipse 800px 500px at 50% 100%, rgba(109,40,217,.22), transparent 60%);background-attachment:fixed;}
 a{color:inherit;text-decoration:none;}
 button{font-family:inherit;cursor:pointer;}
+a,button,[onclick],.mc-pro,.mc-pro-opt,.hero-arrow,.hero-dot,.cat-pill,.tag-chip,.lb-row,.player-row,.pick-card,.related-card,.md-icon-btn,.star-card,.lang-card{-webkit-tap-highlight-color:transparent;outline:none;}
+a:focus:not(:focus-visible),button:focus:not(:focus-visible),[onclick]:focus:not(:focus-visible){outline:none;}
+a:focus-visible,button:focus-visible,[onclick]:focus-visible{outline:2px solid var(--accent2);outline-offset:2px;border-radius:4px;}
 .wrap{max-width:1240px;margin:0 auto;padding:0 20px;}
 .wrap-single{max-width:1020px;}
 ::selection{background:rgba(168,85,247,.35);}
