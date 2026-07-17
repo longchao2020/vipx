@@ -405,15 +405,16 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .vino-token-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 
 /* roadmap timeline */
-.roadmap-list{display:flex;flex-direction:column;gap:10px;}
-.roadmap-row{display:flex;align-items:flex-start;gap:14px;background:rgba(147,51,234,.06);border:1px solid var(--border);border-radius:14px;padding:14px 18px;backdrop-filter:blur(8px);}
-.roadmap-phase{flex-shrink:0;width:64px;text-align:center;}
-.roadmap-num{font-size:20px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
-.roadmap-time{font-size:10px;color:var(--text-faint);font-weight:700;margin-top:2px;}
-.roadmap-body{flex:1;}
-.roadmap-title{font-weight:800;font-size:13.5px;margin-bottom:3px;}
+.roadmap-list{display:flex;flex-direction:column;gap:2px;}
+.roadmap-row{display:flex;align-items:flex-start;gap:16px;padding:12px 16px;border-radius:14px;transition:.15s;}
+.roadmap-phase{flex-shrink:0;width:56px;text-align:center;}
+.roadmap-num{font-size:15px;}
+.roadmap-time{font-size:10px;color:var(--text-faint);font-weight:700;margin-top:4px;}
+.roadmap-body{flex:1;padding-top:2px;}
+.roadmap-title{font-weight:800;font-size:14px;margin-bottom:4px;}
 .roadmap-desc{font-size:12px;color:var(--text-dim);line-height:1.55;}
-.roadmap-row.current{border-color:var(--border-strong);box-shadow:inset 0 0 0 1px rgba(192,132,252,.2);}
+.roadmap-row.current{background:rgba(147,51,234,.09);box-shadow:inset 0 0 0 1px var(--border-strong);}
+.roadmap-row:not(.current) .roadmap-title{color:var(--text-dim);}
 
 /* ops-center chips */
 .ops-grid{display:flex;flex-wrap:wrap;gap:10px;}
@@ -445,36 +446,34 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .team-card:nth-child(3) .team-avatar{background:linear-gradient(135deg,#c026d3,#e879f9);}
 .team-card:nth-child(4) .team-avatar{background:linear-gradient(135deg,#f0b90b,#fcd34d);color:#1a1200;}
 
-/* abstract globe visual for the six ops hubs — concentric/meridian circle + ring of hub chips */
-.globe-wrap{position:relative;width:100%;max-width:380px;margin:22px auto 8px;aspect-ratio:1/1;}
-.globe-orb{position:absolute;left:50%;top:50%;width:46%;height:46%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 32% 28%,rgba(147,51,234,.42),rgba(10,5,24,.05) 72%);border:1px solid var(--border-strong);box-shadow:0 0 50px -12px rgba(147,51,234,.55);overflow:hidden;}
-.globe-orb .gm-v{position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(192,132,252,.3);transform:translateX(-50%);}
-.globe-orb .gm-h{position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(192,132,252,.3);}
-.globe-orb .gm-e1{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(192,132,252,.22);transform:scaleX(.5);}
-.globe-orb .gm-e2{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(192,132,252,.22);transform:scaleX(.82);}
-.globe-hub-ring{position:absolute;inset:0;}
-.globe-hub{position:absolute;transform:translate(-50%,-50%);background:rgba(147,51,234,.1);border:1px solid var(--border);border-radius:99px;padding:7px 13px;font-size:11.5px;font-weight:700;color:var(--text-dim);white-space:nowrap;backdrop-filter:blur(6px);}
-.globe-hub-ring .globe-hub:nth-child(1){top:6%;left:50%;}
-.globe-hub-ring .globe-hub:nth-child(2){top:27%;left:87%;}
-.globe-hub-ring .globe-hub:nth-child(3){top:70%;left:87%;}
-.globe-hub-ring .globe-hub:nth-child(4){top:94%;left:50%;}
-.globe-hub-ring .globe-hub:nth-child(5){top:70%;left:13%;}
-.globe-hub-ring .globe-hub:nth-child(6){top:27%;left:13%;}
+/* world map visual for the six ops hubs — abstract continent silhouettes + pinned hub markers */
+.world-map-wrap{position:relative;width:100%;max-width:600px;margin:20px auto 10px;aspect-ratio:2/1;padding:0 60px 0 0;}
+.world-map-svg{width:100%;height:100%;display:block;}
+.wm-land{fill:rgba(168,110,254,.24);}
+.wm-pin{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:6px;z-index:2;}
+.wm-dot{width:9px;height:9px;border-radius:50%;background:var(--accent2);flex-shrink:0;animation:wm-pulse 2.2s ease-out infinite;}
+.wm-label{font-size:11px;font-weight:700;color:var(--text);background:rgba(10,5,24,.6);border:1px solid var(--border-strong);padding:4px 10px;border-radius:99px;white-space:nowrap;backdrop-filter:blur(6px);}
+@keyframes wm-pulse{0%{box-shadow:0 0 0 0 rgba(192,132,252,.55);}70%{box-shadow:0 0 0 8px rgba(192,132,252,0);}100%{box-shadow:0 0 0 0 rgba(192,132,252,0);}}
 
 /* roadmap timeline — continuous connecting line through node markers */
 .roadmap-list{position:relative;}
-.roadmap-list::before{content:'';position:absolute;left:50px;top:24px;bottom:24px;width:2px;background:linear-gradient(180deg,rgba(192,132,252,.55),rgba(192,132,252,.08));z-index:0;}
+.roadmap-list::before{content:'';position:absolute;left:44px;top:24px;bottom:24px;width:2px;background:linear-gradient(180deg,rgba(192,132,252,.55),rgba(192,132,252,.08));z-index:0;}
 .roadmap-row{position:relative;z-index:1;}
 .roadmap-num{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;background:var(--card-solid);border:2px solid var(--border-strong);color:var(--text-dim);margin:0 auto;position:relative;z-index:2;}
 .roadmap-row.current .roadmap-num{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 0 0 4px rgba(147,51,234,.2);}
 
-/* global key-moments network graph — scattered nodes + thin SVG connecting lines */
-.network-wrap{position:relative;min-height:320px;margin-top:6px;}
-.network-lines{position:absolute;inset:0;width:100%;height:100%;z-index:1;}
-.network-lines line{stroke:rgba(192,132,252,.32);stroke-width:.3;vector-effect:non-scaling-stroke;}
-.network-lines circle{fill:var(--accent2);opacity:.7;}
-.network-node{position:absolute;max-width:46%;background:rgba(147,51,234,.1);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-size:11.5px;font-weight:700;color:var(--text-dim);backdrop-filter:blur(6px);line-height:1.45;z-index:2;}
-.network-node.done{border-color:rgba(18,216,150,.32);color:var(--text-dim);}
+/* global key-moments — clean event timeline, consistent with roadmap-list pattern */
+.event-list{display:flex;flex-direction:column;gap:1px;}
+.event-row{display:flex;align-items:center;gap:14px;padding:11px 16px;border-radius:12px;position:relative;}
+.event-row:not(:last-child)::after{content:'';position:absolute;left:26px;bottom:-1px;width:1px;height:12px;background:rgba(192,132,252,.25);}
+.event-dot{width:9px;height:9px;border-radius:50%;background:var(--border-strong);flex-shrink:0;}
+.event-row.done .event-dot{background:var(--up);}
+.event-time{font-size:12px;font-weight:800;color:var(--text-dim);width:62px;flex-shrink:0;}
+.event-body{flex:1;font-size:13px;color:var(--text-dim);}
+.event-body b{color:var(--text);font-weight:800;}
+.event-tag{font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:99px;background:rgba(147,51,234,.1);color:var(--text-faint);flex-shrink:0;}
+.event-tag.done{background:rgba(18,216,150,.12);color:var(--up);}
+@media(max-width:640px){.event-row{gap:10px;padding:10px 8px;}.event-time{width:48px;font-size:11px;}.event-body{font-size:12px;}.event-tag{display:none;}}
 
 /* merged closing panel — replaces the old 3-fragment stack (data source card + eco banner + CTA) */
 .closing-panel{background:var(--grad);border-radius:20px;padding:34px 36px;color:#fff;box-shadow:var(--shadow-card);}
@@ -545,13 +544,11 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   .phase-flow .atm-eco-card:not(:last-child)::before{top:auto;bottom:-22px;left:50%;right:auto;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--accent2);border-bottom:none;}
   .team-card{padding:14px;gap:12px;}
   .team-avatar{width:44px;height:44px;font-size:10px;}
-  .globe-wrap{max-width:300px;}
-  .globe-hub{font-size:10px;padding:6px 10px;}
-  .roadmap-list::before{display:none;}
+  .world-map-wrap{max-width:100%;padding-right:0;aspect-ratio:auto;min-height:260px;}
+  .wm-label{font-size:9.5px;padding:3px 8px;}
+  .roadmap-list::before{left:38px;}
   .roadmap-num{width:26px;height:26px;font-size:11px;}
-  .network-wrap{min-height:0;}
-  .network-node{position:static;max-width:100%;display:block;margin-bottom:8px;}
-  .network-lines{display:none;}
+  .roadmap-phase{width:48px;}
   .closing-panel{padding:22px;}
   .closing-panel-actions{flex-direction:column;align-items:flex-start;}
   .closing-panel-stats{gap:20px;}
