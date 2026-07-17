@@ -6,7 +6,7 @@ var NAV_CATS = [
   {id:'sports', key:'nav_sports', icon:'🏆', href:'/sports'},
   {id:'culture', key:'nav_culture', icon:'🎬', href:'/culture'},
   {id:'events', key:'nav_events', icon:'🌐', href:'/events'},
-  {id:'atm', key:'nav_atm', icon:'🪙', href:'/atm'}
+  {id:'atm', key:'nav_atm', icon:'🪙', href:'/vino'}
 ];
 var MOBILE_CATS = ['home','trending','crypto','sports','profile'];
 
