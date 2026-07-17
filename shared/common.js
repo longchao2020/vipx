@@ -268,6 +268,35 @@ function filterSports(cat){
     card.style.display = show ? '' : 'none';
   });
 }
+/* --- "查看更多" load-more pattern for market-card grids ---
+   Usage: <div class="grid" data-more="8"> ... cards ... </div>
+   Hides every card beyond the Nth, inserts a "查看更多 (N)" button after the
+   grid that reveals the rest on click. Uses a dedicated .mc-hidden class
+   (display:none !important) so it composes safely with filterSports(), which
+   only ever toggles inline style.display — a card only shows once BOTH the
+   inline style allows it AND .mc-hidden has been removed. */
+function initLoadMore(){
+  document.querySelectorAll('.grid[data-more]').forEach(function(grid){
+    if(grid.__loadMoreInit) return;
+    grid.__loadMoreInit = true;
+    var n = parseInt(grid.getAttribute('data-more'), 10);
+    if(!n || isNaN(n)) return;
+    var cards = Array.prototype.slice.call(grid.children);
+    if(cards.length <= n) return;
+    var hidden = cards.slice(n);
+    hidden.forEach(function(c){ c.classList.add('mc-hidden'); });
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'load-more-btn';
+    btn.innerHTML = '<span>查看更多</span><span>(' + hidden.length + ')</span>';
+    btn.addEventListener('click', function(){
+      hidden.forEach(function(c){ c.classList.remove('mc-hidden'); });
+      btn.remove();
+    });
+    grid.parentNode.insertBefore(btn, grid.nextSibling);
+  });
+}
+
 function initCommon(pageId){
   window.__vipxPage = pageId;
   applyTheme();
@@ -282,4 +311,5 @@ function initCommon(pageId){
   if(pageId === 'profile') renderMyBets();
   startLiveSim();
   initHeroCarousel();
+  initLoadMore();
 }
