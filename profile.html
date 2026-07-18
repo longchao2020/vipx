@@ -13,6 +13,14 @@
 
 <div class="wrap wrap-single">
 <div class="profile-hero"><div class="profile-wallet-row"><div style="display:flex;align-items:center;gap:14px;"><div class="profile-avatar">👤</div><div><div style="font-weight:800;font-size:16px;" data-i18n="profile_title">我的</div><div style="font-size:12px;color:var(--text-dim);" id="profileAddr">未连接钱包</div></div></div><button class="btn btn-grad" id="profileWalletBtn" onclick="connectMetaMask()">🔗 连接钱包</button></div></div>
+<div class="wallet-bal-card" id="walletBalCard" style="display:none;">
+  <div class="wallet-bal-head"><span>💼 钱包资产</span><span class="wallet-bal-chain">🔗 ENI Mainnet</span></div>
+  <div class="wallet-bal-grid">
+    <div class="wallet-bal-cell"><span class="wbc-ic">💵</span><div><div class="wbc-label">USDT</div><div class="wbc-val" data-wallet-usdt>-</div></div></div>
+    <div class="wallet-bal-cell"><span class="wbc-ic">🪙</span><div><div class="wbc-label">VINO</div><div class="wbc-val" data-wallet-vino>-</div></div></div>
+  </div>
+  <div class="wallet-bal-note">余额直接从 ENI 链上实时读取，仅供参考</div>
+</div>
 <div class="atm-page-section"><div class="atm-section-head"><h2 data-i18n="language">语言 Language</h2></div><div class="lang-grid"><div class="lang-card" data-locale="zh-CN" onclick="setLocale('zh-CN')">简体中文</div><div class="lang-card" data-locale="zh-TW" onclick="setLocale('zh-TW')">繁體中文</div><div class="lang-card" data-locale="en" onclick="setLocale('en')">English</div></div></div>
 <div class="atm-page-section"><div class="atm-section-head"><h2 data-i18n="my_bets">我的下注</h2></div><div class="bets-list" id="betsList"></div></div>
 <div class="atm-page-section"><div class="atm-section-head"><h2 data-i18n="theme">主题模式</h2></div><div class="profile-menu-row"><span>Dark / Light</span><button class="btn" onclick="toggleThemeBtn()">🌙 切换</button></div><div class="profile-menu-row"><span data-i18n="wallet_disconnect">断开连接</span><button class="btn" onclick="disconnectWallet()">🔌 断开</button></div></div>
