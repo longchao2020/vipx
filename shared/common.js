@@ -209,6 +209,51 @@ function refreshWalletUI(){
   var balCard = document.getElementById('walletBalCard');
   if(balCard) balCard.style.display = state.connected ? '' : 'none';
   if(!state.connected) refreshTokenBalances(null);
+  renderTradePanel();
+}
+
+/* --- market.html "下单交易" panel — reflects live wallet connect state ---
+   Markup contract: <div id="tradePanel" data-yes="54" data-no="46"><h3>...</h3>
+   <div id="tradePanelBody"></div></div>. If #tradePanel isn't on the page
+   (any page other than market.html) this is a silent no-op. */
+var __tradeSelected = null;
+function selectTradeOutcome(side){
+  __tradeSelected = side;
+  document.querySelectorAll('#tradePanelBody .mc-pro-opt').forEach(function(el){
+    el.classList.toggle('selected', el.getAttribute('data-side') === side);
+  });
+}
+function submitTradeOrder(){
+  if(!state.connected){ toast('请先连接钱包'); return; }
+  if(!__tradeSelected){ toast('请先选择 Yes 或 No'); return; }
+  var input = document.getElementById('tradeAmtInput');
+  var amt = input ? parseFloat(input.value) : NaN;
+  if(!amt || amt <= 0){ toast('请输入下单金额'); return; }
+  toast('链上下注合约测试中，暂未开放真实下单，敬请期待');
+}
+function renderTradePanel(){
+  var panel = document.getElementById('tradePanel');
+  var body = document.getElementById('tradePanelBody');
+  if(!panel || !body) return;
+  var yesPct = panel.getAttribute('data-yes') || '50';
+  var noPct = panel.getAttribute('data-no') || '50';
+  if(!state.connected){
+    body.innerHTML = '<div class="mc-pro-opts">'
+      + '<div class="mc-pro-opt yes">Yes<b>'+yesPct+'%</b></div>'
+      + '<div class="mc-pro-opt no">No<b>'+noPct+'%</b></div>'
+      + '</div>'
+      + '<button class="btn btn-grad" style="width:100%;margin-top:14px;" onclick="connectMetaMask()">🔗 连接钱包下单</button>';
+    return;
+  }
+  __tradeSelected = null;
+  body.innerHTML = '<div class="mc-pro-opts">'
+    + '<div class="mc-pro-opt yes clickable" data-side="yes" onclick="selectTradeOutcome(\'yes\')">Yes<b>'+yesPct+'%</b></div>'
+    + '<div class="mc-pro-opt no clickable" data-side="no" onclick="selectTradeOutcome(\'no\')">No<b>'+noPct+'%</b></div>'
+    + '</div>'
+    + '<div class="trade-amt-row"><span>💰</span><input id="tradeAmtInput" type="number" min="0" placeholder="输入金额" />'
+    + '<select id="tradeTokenSelect"><option value="USDT">USDT</option><option value="VINO">VINO</option></select></div>'
+    + '<button class="btn btn-grad" style="width:100%;margin-top:12px;" onclick="submitTradeOrder()">下单</button>'
+    + '<div class="trade-hint">🟢 已连接 '+shortAddr(state.address)+' · 链上合约测试中，暂不支持真实下单</div>';
 }
 
 function loadMyBets(){
