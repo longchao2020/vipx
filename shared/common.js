@@ -62,6 +62,22 @@ var LOCALES = [{id:'zh-CN',label:'简体中文'},{id:'zh-TW',label:'繁體中文
 var state = { connected:false, address:null, chainId:null, myBets:[] };
 var PLATFORM_FEE_BPS = 1000;
 
+/* ENI Mainnet — real chain config (Chain ID 173) */
+var ENI_CHAIN_ID_HEX = '0xad';
+var ENI_CHAIN_PARAMS = {
+  chainId: ENI_CHAIN_ID_HEX,
+  chainName: 'ENI Mainnet',
+  nativeCurrency: { name:'EGAS', symbol:'EGAS', decimals:18 },
+  rpcUrls: ['https://rpc.eniac.network','https://rpc1.eniac.network','https://rpc2.eniac.network','https://enirpc.com'],
+  blockExplorerUrls: ['https://scan.eniac.network']
+};
+var ENI_RPC_READONLY = 'https://rpc.eniac.network';
+var TOKEN_CONTRACTS = {
+  USDT: '0xDC1a8A35b0BaA3229b13f348ED708a2fd50b5e3a',
+  VINO: '0x941a0cF0e3bA2Ed200743Ce01b70032337D094a6'
+};
+var ERC20_MINI_ABI = ['function balanceOf(address) view returns (uint256)','function decimals() view returns (uint8)'];
+
 function getLocale(){ return localStorage.getItem('vipx_locale') || 'zh-CN'; }
 function t(key){ var loc = getLocale(); return (I18N[loc] && I18N[loc][key]) || (I18N['zh-CN'][key]) || key; }
 function setLocale(loc){
@@ -119,15 +135,58 @@ function toast(msg){
   window.__toastTimer = setTimeout(function(){ el.classList.remove('show'); }, 2600);
 }
 
+async function ensureEniChain(){
+  if(typeof window.ethereum === 'undefined') return;
+  try{
+    var current = await window.ethereum.request({ method:'eth_chainId' });
+    if(current && current.toLowerCase() === ENI_CHAIN_ID_HEX) return;
+    try{
+      await window.ethereum.request({ method:'wallet_switchEthereumChain', params:[{ chainId: ENI_CHAIN_ID_HEX }] });
+    }catch(switchErr){
+      if(switchErr && switchErr.code === 4902){
+        await window.ethereum.request({ method:'wallet_addEthereumChain', params:[ENI_CHAIN_PARAMS] });
+      }else{
+        throw switchErr;
+      }
+    }
+  }catch(e){ console.warn('ENI chain switch/add failed', e); toast('请在钱包中手动切换到 ENI Mainnet（Chain ID 173）'); }
+}
+
+async function refreshTokenBalances(addr){
+  var uEls = document.querySelectorAll('[data-wallet-usdt]');
+  var vEls = document.querySelectorAll('[data-wallet-vino]');
+  if(!addr || typeof ethers === 'undefined'){
+    uEls.forEach(function(el){ el.textContent = '-'; });
+    vEls.forEach(function(el){ el.textContent = '-'; });
+    return;
+  }
+  try{
+    var provider = new ethers.JsonRpcProvider(ENI_RPC_READONLY);
+    var usdt = new ethers.Contract(TOKEN_CONTRACTS.USDT, ERC20_MINI_ABI, provider);
+    var vino = new ethers.Contract(TOKEN_CONTRACTS.VINO, ERC20_MINI_ABI, provider);
+    var res = await Promise.all([usdt.balanceOf(addr), usdt.decimals(), vino.balanceOf(addr), vino.decimals()]);
+    var uFmt = Number(ethers.formatUnits(res[0], res[1])).toLocaleString(undefined,{maximumFractionDigits:2});
+    var vFmt = Number(ethers.formatUnits(res[2], res[3])).toLocaleString(undefined,{maximumFractionDigits:2});
+    uEls.forEach(function(el){ el.textContent = uFmt; });
+    vEls.forEach(function(el){ el.textContent = vFmt; });
+  }catch(e){
+    console.warn('balance fetch failed', e);
+    uEls.forEach(function(el){ el.textContent = '—'; });
+    vEls.forEach(function(el){ el.textContent = '—'; });
+  }
+}
+
 async function connectMetaMask(){
-  if(typeof window.ethereum === 'undefined'){ toast(t('wallet_connect')+': MetaMask not found'); return; }
+  if(typeof window.ethereum === 'undefined'){ toast('未检测到 EVM 钱包，请先安装 MetaMask 等浏览器钱包'); return; }
   try{
     var accounts = await window.ethereum.request({ method:'eth_requestAccounts' });
     state.connected = true; state.address = accounts[0];
     localStorage.setItem('vipx_wallet', state.address);
-    toast('✅ ' + t('wallet_connect'));
     refreshWalletUI();
-  }catch(e){ toast('Connection failed'); }
+    refreshTokenBalances(state.address);
+    await ensureEniChain();
+    toast('✅ 钱包已连接 · ENI Mainnet');
+  }catch(e){ toast('连接失败：'+(e && e.message ? e.message : '用户取消')); }
 }
 function disconnectWallet(){
   state.connected=false; state.address=null;
@@ -137,7 +196,7 @@ function disconnectWallet(){
 }
 function autoReconnect(){
   var saved = localStorage.getItem('vipx_wallet');
-  if(saved){ state.connected = true; state.address = saved; refreshWalletUI(); }
+  if(saved){ state.connected = true; state.address = saved; refreshWalletUI(); refreshTokenBalances(saved); }
 }
 function shortAddr(a){ return a ? (a.slice(0,6)+'…'+a.slice(-4)) : ''; }
 function refreshWalletUI(){
@@ -145,6 +204,11 @@ function refreshWalletUI(){
   if(btn) btn.textContent = state.connected ? shortAddr(state.address) : t('wallet_connect');
   var pbtn = document.getElementById('profileWalletBtn');
   if(pbtn) pbtn.textContent = state.connected ? ('🟢 ' + shortAddr(state.address)) : ('🔗 ' + t('wallet_connect'));
+  var addrEl = document.getElementById('profileAddr');
+  if(addrEl) addrEl.textContent = state.connected ? state.address : '未连接钱包';
+  var balCard = document.getElementById('walletBalCard');
+  if(balCard) balCard.style.display = state.connected ? '' : 'none';
+  if(!state.connected) refreshTokenBalances(null);
 }
 
 function loadMyBets(){
