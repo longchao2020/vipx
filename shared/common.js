@@ -78,6 +78,57 @@ var TOKEN_CONTRACTS = {
 };
 var ERC20_MINI_ABI = ['function balanceOf(address) view returns (uint256)','function decimals() view returns (uint8)'];
 
+/* VINO/USDT liquidity pair on ENI chain (standard Uniswap-V2-style pool) — used to
+   compute VINO's live price + market cap directly from on-chain reserves on vino.html.
+   Verified: token0()=VINO, token1()=USDT, both 18 decimals. price = reserve1/reserve0. */
+var VINO_USDT_PAIR = '0xa371aa2856dd2c69f04dbd906631e7aba7859471';
+var VINO_TOTAL_SUPPLY = 21000000000; // 210亿，与页面"总量"口径一致
+var PAIR_MINI_ABI = ['function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)'];
+
+function pairPrice(reserves){
+  return Number(ethers.formatUnits(reserves[1], 18)) / Number(ethers.formatUnits(reserves[0], 18));
+}
+async function refreshVinoLivePrice(){
+  var priceEl = document.querySelector('[data-vino-live-price]');
+  var mcapEl = document.querySelector('[data-vino-live-mcap]');
+  var chgEl = document.querySelector('[data-vino-live-chg]');
+  var updEl = document.getElementById('vinoPriceUpdatedAt');
+  if(!priceEl && !mcapEl) return; // only relevant on vino.html
+  if(typeof ethers === 'undefined') return;
+  try{
+    var provider = new ethers.JsonRpcProvider(ENI_RPC_READONLY);
+    var pair = new ethers.Contract(VINO_USDT_PAIR, PAIR_MINI_ABI, provider);
+    var resNow = await pair.getReserves();
+    var price = pairPrice(resNow);
+    var mcap = price * VINO_TOTAL_SUPPLY;
+    if(priceEl) priceEl.textContent = '$' + price.toFixed(6);
+    if(mcapEl) mcapEl.textContent = fmtUsd(mcap);
+
+    // 24h change: read the same pair's reserves ~24h ago via blockTag, using a live
+    // average block-time estimate (avoids hardcoding a chain-specific block interval).
+    try{
+      var latest = await provider.getBlockNumber();
+      var pastProbe = await provider.getBlock(latest - 5000);
+      var nowBlock = await provider.getBlock(latest);
+      var avgBlockTime = (nowBlock.timestamp - pastProbe.timestamp) / 5000;
+      var blocksFor24h = Math.round(86400 / avgBlockTime);
+      var resOld = await pair.getReserves({ blockTag: latest - blocksFor24h });
+      var priceOld = pairPrice(resOld);
+      var pct = ((price - priceOld) / priceOld) * 100;
+      if(chgEl){
+        chgEl.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(2) + '%';
+        chgEl.classList.toggle('up', pct >= 0);
+        chgEl.classList.toggle('down', pct < 0);
+      }
+    }catch(e2){ console.warn('vino 24h change calc failed', e2); }
+
+    if(updEl) updEl.textContent = '刚刚同步 · 直读 ENI 链上储备量';
+  }catch(e){
+    console.warn('vino live price fetch failed', e);
+    if(updEl) updEl.textContent = '链上同步失败，当前为参考值';
+  }
+}
+
 function getLocale(){ return localStorage.getItem('vipx_locale') || 'zh-CN'; }
 function t(key){ var loc = getLocale(); return (I18N[loc] && I18N[loc][key]) || (I18N['zh-CN'][key]) || key; }
 function setLocale(loc){
@@ -418,6 +469,7 @@ function initCommon(pageId){
   autoReconnect();
   refreshWalletUI();
   if(pageId === 'profile') renderMyBets();
+  if(pageId === 'atm'){ refreshVinoLivePrice(); setInterval(refreshVinoLivePrice, 60000); }
   startLiveSim();
   initHeroCarousel();
   initLoadMore();
